@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sounds4Slack</title>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="slack.js"></script>
+    <script type="text/javascript" src="socket.js"></script>
+    <script type="text/javascript" src="sound.js"></script>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h1>Sounds4Slack</h1>
+    <div id="sounds-wrapper" class="box">
+        <form id="sounds">
+            <label for="sound-config">Sound Details</label>
+            <textarea name="sound-config" id="sound-config" rows=5 cols=80></textarea>
+            <input type="button" id="sound-apply" value="Apply">
+        </form>
+    </div>
+    <div id="connection-wrapper" class="box">
+        <form id="connection">
+            <label for="auth">Connection Details</label>
+            <textarea name="auth" id="auth" rows=5 cols=80></textarea>
+            <input type="button" id="auth-connect" value="Connect">
+            <input type="button" id="auth-disconnect" value="Disconnect">
+        </form>
+    </div>
+    <div id="audio-wrapper"></div>
+</body>
+</html>
+
