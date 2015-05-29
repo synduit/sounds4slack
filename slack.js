@@ -1,19 +1,12 @@
+var auth;
+
 $(document).ready(function() {
 
     /* Define Connect button click handler. */
     $("#auth-connect").click(function() {
-        var auth = JSON.parse($("#auth").val());
+        auth = JSON.parse($("#auth").val());
         localStorage.setItem('auth', JSON.stringify(auth));
-        $.ajax({
-            url: "https://slack.com/api/rtm.start",
-            data: {
-                token: auth.token
-            },
-            success: function(data, status, jqxhr) {
-                console.log(JSON.stringify(data));
-                connectSocket(data.url);
-            }
-        });
+        reconnectSocket();
     });
 
     /* Define Disconnect button click handler. */
@@ -22,10 +15,11 @@ $(document).ready(function() {
     });
 
     /* Load token from localStorage. */
-    var auth = localStorage.getItem('auth');
-    if (auth != null) {
-        $("#auth").val(auth);
-        $("#auth-connect").trigger('click');
+    var auth_str = localStorage.getItem('auth');
+    if (auth_str != null) {
+        auth = JSON.parse(auth_str);
+        $("#auth").val(auth_str);
+        setTimeout('reconnectSocket()', 1000);
     }
     else {
         // Provide a default example value.
