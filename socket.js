@@ -92,5 +92,5 @@ function heartbeat_cancel_defibrillate() {
 }
 
 function heartbeat_stop() {
-    cleartTimeout(heartbeat_timer);
+    clearTimeout(heartbeat_timer);
 }
